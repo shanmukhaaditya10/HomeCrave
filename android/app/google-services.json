@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "342644992857",
+    "project_id": "gharkakhana-a0a5f",
+    "storage_bucket": "gharkakhana-a0a5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342644992857:android:77ed6cd7b1c49c51b17a48",
+        "android_client_info": {
+          "package_name": "com.gharkakhana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342644992857-j3hatedui0orqum25micppp0gik0q8em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVcM3Q8eJ-HoT0cfDu9TYlt439-_K9k_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342644992857-j3hatedui0orqum25micppp0gik0q8em.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
