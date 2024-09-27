@@ -10,14 +10,14 @@ const GlobalStyles = StyleSheet.create({
     },
     text: {
         fontSize: moderateScale(15),
-        color:"black",
+        color:"#ffffff",
         fontWeight:"300"
 
 
     },
     BigText:{
         fontSize: moderateScale(30),
-        color:"#000000",
+        color:"#ffffff",
         fontWeight:"700"
     }
 })

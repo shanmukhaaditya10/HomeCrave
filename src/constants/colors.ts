@@ -1,7 +1,7 @@
 
 
 const COLORS = {
-    PRIMARY:"#2E3192",
+    PRIMARY:"#E8BF71",
     TEXT_BLACK:"black",
     INPROGRESS:"#1160FAEB",
     DELAYED:"#870606",

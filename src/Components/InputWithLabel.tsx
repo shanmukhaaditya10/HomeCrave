@@ -44,7 +44,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
       <View style={inputStyles.inputContainer}>
         <TextInput
           placeholder={placeholder}
-          placeholderTextColor={'#263238'}
+          placeholderTextColor={'#747474'}
           style={inputStyles.input}
           onChangeText={(text) => handleInputChange(field, text)}
           value={details[field]}
@@ -65,9 +65,9 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
             onPressIn={() => setIsVisible(!isVisible)}
           >
             {!isVisible? (
-              <NotVisible width={30} height={30} />
+              <NotVisible width={30} height={30} color={"white"} />
             ) : (
-              <Visible width={30} height={30} />
+              <Visible width={30} height={30} color={"white"} />
             )}
           </TouchableOpacity>
         )}
@@ -82,7 +82,7 @@ const inputStyles = StyleSheet.create({
   },
   label: {
     fontSize: moderateScale(13),
-    color: '#263238',
+    color: '#ffffff',
     fontWeight: 'bold',
     marginBottom: scale(5),
   },
@@ -93,13 +93,13 @@ const inputStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#2E3192',
+    borderColor: '#ffffff',
     borderRadius: scale(6),
   },
   input: {
     fontSize: moderateScale(15),
     width: '90%',
-    color: 'black',
+    color: '#ffffff',
   },
 });
 

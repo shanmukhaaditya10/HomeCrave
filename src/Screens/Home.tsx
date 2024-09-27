@@ -1,55 +1,93 @@
-import { Keyboard, KeyboardAvoidingView, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
-import React from 'react'
-import GlobalStyles from '../constants/GlobalStyles'
-import HomeHeader from '../Components/HomeHeader'
-import { moderateScale } from 'react-native-size-matters'
-import { SmallText } from '../Components/Wrappers/CustomText'
-import FoodCard from '../Components/FoodCard'
-import SectionScroller from '../Components/SectionScroller'
+import {
+  FlatList,
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
+import React from 'react';
+import GlobalStyles from '../constants/GlobalStyles';
+import HomeHeader from '../Components/HomeHeader';
+import {moderateScale} from 'react-native-size-matters';
+import {SmallText} from '../Components/Wrappers/CustomText';
+import SectionScroller from '../Components/SectionScroller';
+import VerticalScroller from '../Components/VerticalScroller';
+import useUser from '../ServerHooks/useUser';
 const Home = () => {
-
-  
-  return (
-    <TouchableWithoutFeedback 
-    style={[GlobalStyles.container]}
-    onPress={Keyboard.dismiss}
-
-    >
-      <KeyboardAvoidingView
+  const Main = () => {
+    const {userData} = useUser();
+    return (
+      <TouchableWithoutFeedback
         style={[GlobalStyles.container]}
-        behavior="padding"
-        
-      >
+        onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView
+          style={[GlobalStyles.container]}
+          behavior="padding">
+          <ScrollView>
+            <HomeHeader />
+            <View
+              style={{
+                paddingVertical: moderateScale(20),
+                rowGap: moderateScale(15),
+              }}>
+              <View style={[styles.section]}>
+                <SmallText
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: moderateScale(17),
+                    fontFamily: 'serif',
+                    letterSpacing: moderateScale(0.1),
+                    paddingHorizontal: moderateScale(10),
+                    color: 'white',
+                  }}>
+                  From Top Sellers
+                </SmallText>
+                <SectionScroller />
+              </View>
+              <View style={[styles.section]}>
+                <SmallText
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: moderateScale(17),
+                    fontFamily: 'serif',
+                    letterSpacing: moderateScale(0.1),
+                    paddingHorizontal: moderateScale(10),
+                    color: 'white',
+                  }}>
+                  Recents
+                </SmallText>
+                <View
+                style={{
+                  paddingHorizontal: moderateScale(10),
+                }}
+                >
 
-     <HomeHeader/>
-     <View 
-     style={{
-       paddingVertical:moderateScale(20),
-     }}
-     >
-      <View style={[styles.section]} >
-      <SmallText
-      style={{fontWeight:'bold',fontSize:moderateScale(17),fontFamily:'serif',letterSpacing:moderateScale(0.1),paddingHorizontal:moderateScale(10),color:'white'}}
-      >
-        From Trusted Sellers
-      </SmallText>
-     <SectionScroller/>
-      </View>
+                <VerticalScroller />
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
+    );
+  };
 
+  return (
+    <FlatList
+      data={[]}
+      renderItem={({item}) => <></>}
+      ListHeaderComponent={<Main></Main>}></FlatList>
+  );
+};
 
-     </View>
-    
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
-  )
-}
-
-export default Home
+export default Home;
 
 const styles = StyleSheet.create({
   section: {
     width: '100%',
-    rowGap:moderateScale(10),
-    paddingHorizontal:moderateScale(5),
-  }
-})
+    rowGap: moderateScale(10),
+    paddingHorizontal: moderateScale(5),
+  },
+});

@@ -7,26 +7,93 @@ import UserIcon from '../Assets/UserIcon.svg';
 import COLORS from '../constants/colors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigatorProps } from 'react-native-screens/lib/typescript/native-stack/types';
-const FoodCard = () => {
+const LargeFoodCard = () => {
   const navigation = useNavigation<NativeStackNavigatorProps>()
   return (
     <TouchableOpacity
       style={{
-        height: moderateScale(210),
-        width: moderateScale(190),
+        height: moderateScale(150),
+        width: '100%',
         elevation: 10,
-        borderWidth: 1,
-        shadowColor: '#ffffff',
+        borderWidth: 1.5,
+        borderColor: COLORS.PRIMARY,
+        shadowColor: 'black',
         backgroundColor: '#151515',
         borderRadius: moderateScale(10),
         overflow: 'hidden',
-        borderColor:COLORS.PRIMARY
+        paddingVertical: moderateScale(17),
+        
       }}
       onPress={() => {
         navigation.navigate('FoodDetails')
       }}
       >
-      <View
+        <View
+        style={{
+            flexDirection: 'row',
+            justifyContent:"space-between",
+            paddingHorizontal:moderateScale(20)
+        }}
+        >
+            <View
+            style={{
+              width:"60%"
+            }}
+            >
+                <BigText 
+                style={{
+                    fontSize:moderateScale(22),
+                }}
+                >
+                Masala Dosa         
+                </BigText>
+                <SmallText 
+                style={{
+                  fontSize:moderateScale(13),
+                }}
+                >
+                ingridients: onions, potato, tomato,peas...
+                
+                </SmallText>
+               <View
+               style={{
+                flexDirection:'row',
+                alignItems:'center',
+                columnGap:4
+               }}
+               >
+               <BigText 
+                style={{
+                    fontSize:moderateScale(18)
+                }}
+                >
+                60         
+                </BigText>
+               
+                <DiamIconWhite width={moderateScale(26)} height={moderateScale(26)} />
+                
+               </View>
+               <SmallText
+               style={{
+                fontSize:moderateScale(12),
+                color:COLORS.PRIMARY
+               }}
+               >
+                  Upto 5 servings
+
+                </SmallText>
+            </View>
+            <View>
+                <Image source={require('../Assets/Dosa.jpg')} style={{width:moderateScale(100),height:moderateScale(100),objectFit:'cover',
+                borderRadius:moderateScale(20),
+
+
+              }}/>
+
+            </View>
+
+        </View>
+      {/* <View
         style={{
           width: '100%',
           height: '65%',
@@ -61,7 +128,7 @@ const FoodCard = () => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <DiamIconWhite width={moderateScale(20)} height={moderateScale(20)} />
+            <DiamIcon width={moderateScale(20)} height={moderateScale(20)} />
             <BigText
               style={{
                 fontSize: moderateScale(15),
@@ -97,11 +164,11 @@ const FoodCard = () => {
             >Name</SmallText>
         </View>  
         </View>
-      </View>
+      </View> */}
     </TouchableOpacity>
   );
 };
 
-export default FoodCard;
+export default LargeFoodCard;
 
 const styles = StyleSheet.create({});

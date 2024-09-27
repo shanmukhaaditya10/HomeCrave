@@ -23,7 +23,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   height,
   bgColor,
   text,
-  isLoading=false,
+  isLoading,
+  disabled=true,
  ...props
 }) => {
   return (
@@ -41,6 +42,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         styleProps,
       ]}
       {...props}
+      disabled={disabled}
     >
       <Text style={{ color, fontSize,fontWeight:'500' }}>{text}</Text>
 

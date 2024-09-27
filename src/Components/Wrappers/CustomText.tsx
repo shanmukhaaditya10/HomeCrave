@@ -42,7 +42,7 @@ export const DynamicText = ({
     <>
       {isLoading ? (
        <Text
-         style={{color:"black"}}
+         style={{color:"#ffffff"}}
        >Loading...</Text>
       ) : (
         <View>{children}</View>

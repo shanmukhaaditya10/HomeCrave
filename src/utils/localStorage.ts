@@ -5,20 +5,20 @@ export const storage = new MMKV({
   encryptionKey: 'secureKey'
 });
 
-export const setUserPublicKey = (publicKey: string,userId:string | undefined ) => {
+export const setUserPublicKey = async(publicKey: string,userId:string | undefined ) => {
 
         try {
-            storage.set(`publicKey-${userId}`, publicKey);
+            await storage.set(`publicKey-${userId}`, publicKey);
         } catch (error) {
             console.log(error);
         }
     
     
 };
-export const setUserSecretKey = (secretKey: string,userId:string | undefined ) => {
+export const setUserSecretKey = async(secretKey: string,userId:string | undefined ) => {
 
     try {
-        storage.set(`secretKey-${userId}`, secretKey);
+       await storage.set(`secretKey-${userId}`, secretKey);
     } catch (error) {
         console.log(error);
     }

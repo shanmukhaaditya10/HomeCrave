@@ -73,7 +73,7 @@ app.get('/api', (req, res) => {
 // Define the port the server will listen on
 const PORT = process.env.PORT || 3000;
 app.get('/getaccount/:id', async(req, res) => {
-    const server = new DiamSdk.Aurora.Server("https://diamtestnet.diamcircle.io/");
+    const server = await new DiamSdk.Aurora.Server("https://diamtestnet.diamcircle.io/");
 
 // the JS SDK uses promises for most actions, such as retrieving an account
 const account = await server.loadAccount(req.params.id);

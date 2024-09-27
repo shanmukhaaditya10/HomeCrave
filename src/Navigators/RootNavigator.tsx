@@ -7,6 +7,7 @@ import {focusManager} from '@tanstack/react-query';
 import auth from '@react-native-firebase/auth';
 import useUserStore, {initializeUserState} from '../Stores/useUserStore';
 import Splash from '../Screens/Splash';
+import { getUserPublicKey } from '../utils/localStorage';
 const RootStack = createNativeStackNavigator();
 
 const RootNavigator = () => {
@@ -35,7 +36,7 @@ const RootNavigator = () => {
   }
   return (
     <>
-      {user ? (
+      {user  ? (
         <>
           <RootStack.Navigator
             screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
