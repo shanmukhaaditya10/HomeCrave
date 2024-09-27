@@ -4,7 +4,7 @@ import { moderateScale, scale } from "react-native-size-matters";
 const GlobalStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff6d7",
+        backgroundColor: "#161616",
         // alignItems: "center",
         // justifyContent: "center",
     },

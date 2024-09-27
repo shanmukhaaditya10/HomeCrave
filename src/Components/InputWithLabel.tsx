@@ -14,13 +14,12 @@ import NotVisible from '../Assets/NotVisible.svg';
 interface InputWithLabelProps {
   label: string;
   placeholder: string;
+  disabled?: boolean;
   field: string;
   isPassword?: boolean; 
   details: Record<string, string>; 
-  setDetails: React.Dispatch<React.SetStateAction<{
-    email: string;
-    password: string;
-}>>
+  setDetails: React.Dispatch<React.SetStateAction<any>>
+
 }
 
 const InputWithLabel: React.FC<InputWithLabelProps> = ({
@@ -30,10 +29,11 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
   isPassword,
   details,
   setDetails,
- ...props
+  disabled,
+  ...props
 }) => {
   const handleInputChange = (field: string, text: string) => {
-    setDetails((prevDetails) => ({...prevDetails, [field]: text }));
+    setDetails((prevDetails: any) => ({...prevDetails, [field]: text }));
   };
 
   const [isVisible, setIsVisible] = useState<boolean>(true);
@@ -50,6 +50,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
           value={details[field]}
           secureTextEntry={isPassword && isVisible}
           autoCapitalize="none"
+          editable={!disabled}
           {...props}
         />
         {isPassword && (

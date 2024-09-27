@@ -19,6 +19,10 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigatorProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import useUserStore from '../Stores/useUserStore';
 import { SmallText } from '../Components/Wrappers/CustomText';
+import useGlobalStore from '../Stores/useGlobalStore';
+import { MMKV } from 'react-native-mmkv'
+import { setUserPublicKey, setUserSecretKey } from '../utils/localStorage';
+import { BASE_URL } from '../constants/Routes';
 
 
 const SignUp = () => {
@@ -28,8 +32,8 @@ const SignUp = () => {
     password: '',
   });
   const [isError,setIsError] = useState(false)
-
-  const setUser = useUserStore((state) => state.setUser);
+  const {user,setUser} = useUserStore((state) => state);
+  const {publicKey,setPublicKey} = useGlobalStore((state) => state);
   // Step 1: Set up the mutation
   const {isPending: isLoading, mutateAsync: signupMutation} = useMutation({
     mutationKey: ['signup'],
@@ -37,12 +41,27 @@ const SignUp = () => {
       const {email, password} = values;
       try {
          const res = await auth().createUserWithEmailAndPassword(email, password);
-        setUser(res.user);
+         const setUpAccont = await fetch(`${BASE_URL}/api`)
+         const jsonData = await setUpAccont.json();
+         setUserPublicKey(jsonData.pair,res.user.uid);
+         setUserSecretKey(jsonData.secret,res.user.uid);
+         setUser(res.user);
+         console.log(res.user.uid);
+         
+
       } catch (error) {
       setIsError(true)
       console.log(error);
       
 
+      }
+      try {
+       
+        
+        
+      } catch (error) {
+        console.log(error);
+        
       }
     },
     

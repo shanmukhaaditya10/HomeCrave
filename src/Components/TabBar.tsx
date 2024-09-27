@@ -15,13 +15,13 @@ function TabBar({state, descriptors, navigation}: any) {
         width: '80%',
         alignSelf: 'center',
         bottom: 20,
-        backgroundColor: 'rgba(0,0,0,0.7)',
+        backgroundColor: 'rgb(249, 249, 249)',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: moderateScale(30),
         borderRadius: moderateScale(30),
         elevation: 10,
-        shadowColor: '#000',
+        shadowColor: '#cecece',
       }}>
       {state.routes.map((route: any, index: number) => {
         const {options} = descriptors[route.key];
@@ -64,13 +64,13 @@ function TabBar({state, descriptors, navigation}: any) {
             onPress={onPress}
             onLongPress={onLongPress}>
             {index === 0 && <AntIcon name="home" size={moderateScale(30)}
-            color={isFocused ? 'white' : 'gray'}
+            color={isFocused ? 'black' : '#adadad'}
             />}
             {index === 1 && (
-              <AntIcon name="pluscircle" size={moderateScale(30)} color={isFocused ? 'white' : 'gray'} />
+              <AntIcon name="pluscircle" size={moderateScale(30)} color={isFocused ? 'black' : '#adadad'} />
             )}
             {index === 2 && <AntIcon name="user" size={moderateScale(30)}
-            color={isFocused ? 'white' : 'gray'}
+            color={isFocused ? 'black' : '#adadad'}
             />}
           </TouchableOpacity>
         );

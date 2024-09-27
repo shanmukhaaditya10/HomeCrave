@@ -6,7 +6,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import Logo from '../Assets/Logo.svg';
 import InputWithLabel from '../Components/InputWithLabel';
@@ -56,7 +57,12 @@ const Login = () => {
       
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        behavior={'padding'}
+        keyboardVerticalOffset={20}
+        >
+           <ScrollView
+                style={{width:"100%"}}
+            >
         <View
           style={{
             justifyContent: 'center',
@@ -104,6 +110,27 @@ const Login = () => {
               placeholder="Enter Password"
               isPassword={true}
             />
+            <InputWithLabel
+              details={values}
+              setDetails={setValues}
+              field="PublicKey"
+              label="Public Key"
+              placeholder="Enter Password"
+            />
+            <SmallText style={{
+              marginTop:-20,
+              fontWeight:"400",
+              fontSize:moderateScale(12),
+              textDecorationLine:"underline",
+            }} >
+              <SmallText style={{color:"red"}} >
+                *
+              </SmallText>
+            leave public key empty if signed Up from this device
+            <SmallText style={{color:"red"}} >
+                *
+              </SmallText>
+            </SmallText>
           </View>
           <View
             style={{
@@ -142,7 +169,7 @@ const Login = () => {
               </TouchableOpacity>
             </View>
         </View>
-      
+        </ScrollView>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );

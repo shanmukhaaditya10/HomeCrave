@@ -36,14 +36,13 @@ const CustomButton: React.FC<CustomButtonProps> = ({
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: moderateScale(11),
-          borderColor: '#2E3192',
           borderWidth: 1.5,
         },
         styleProps,
       ]}
       {...props}
     >
-      <Text style={{ color, fontSize }}>{text}</Text>
+      <Text style={{ color, fontSize,fontWeight:'500' }}>{text}</Text>
 
       { isLoading && <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}} >
 
