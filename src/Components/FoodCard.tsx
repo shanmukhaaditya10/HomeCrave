@@ -7,7 +7,8 @@ import UserIcon from '../Assets/UserIcon.svg';
 import COLORS from '../constants/colors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigatorProps } from 'react-native-screens/lib/typescript/native-stack/types';
-const FoodCard = () => {
+import usePosts from '../ServerHooks/usePosts';
+const FoodCard = ({postData}:{postData:any}) => {
   const navigation = useNavigation<NativeStackNavigatorProps>()
   return (
     <TouchableOpacity
@@ -23,7 +24,9 @@ const FoodCard = () => {
         borderColor:COLORS.PRIMARY
       }}
       onPress={() => {
-        navigation.navigate('FoodDetails')
+        navigation.navigate('FoodDetails',{
+          postData
+        })
       }}
       >
       <View
@@ -32,7 +35,7 @@ const FoodCard = () => {
           height: '65%',
         }}>
         <Image
-          source={require('../Assets/Food.jpg')}
+          source={{uri: postData?.imageUri}}
           style={{width: '100%', height: '100%', objectFit: 'cover'}}
         />
       </View>
@@ -44,7 +47,7 @@ const FoodCard = () => {
           style={{
             fontSize: moderateScale(15),
           }}>
-          Food...
+          {postData?.title}
         </BigText>
         <View
         style={{
@@ -67,7 +70,7 @@ const FoodCard = () => {
                 fontSize: moderateScale(15),
               }}>
               {' '}
-              200
+              {postData.price}
             </BigText>
           </View>
           <View>
@@ -76,7 +79,7 @@ const FoodCard = () => {
                 fontSize: moderateScale(11),
                 fontWeight: '400',
               }}>
-              Upto 2 servings
+              Upto {postData.servings} servings
             </SmallText>
           </View>
         </View>
@@ -94,7 +97,7 @@ const FoodCard = () => {
               fontWeight: '400',
               marginTop:moderateScale(-7)
             }}
-            >Name</SmallText>
+            >{postData.name?.split(" ")[0]}</SmallText>
         </View>  
         </View>
       </View>

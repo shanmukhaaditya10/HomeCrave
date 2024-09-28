@@ -15,9 +15,12 @@ import {SmallText} from '../Components/Wrappers/CustomText';
 import SectionScroller from '../Components/SectionScroller';
 import VerticalScroller from '../Components/VerticalScroller';
 import useUser from '../ServerHooks/useUser';
+import usePosts from '../ServerHooks/usePosts';
 const Home = () => {
   const Main = () => {
     const {userData} = useUser();
+  const {postData,isLoading:postsLoading} = usePosts()
+
     return (
       <TouchableWithoutFeedback
         style={[GlobalStyles.container]}
@@ -44,7 +47,7 @@ const Home = () => {
                   }}>
                   From Top Sellers
                 </SmallText>
-                <SectionScroller />
+                <SectionScroller postId={postData} />
               </View>
               <View style={[styles.section]}>
                 <SmallText

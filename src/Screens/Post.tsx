@@ -68,7 +68,10 @@ const Post = () => {
             imageUri: url,
           })
           .then(() => {
-            console.log('User added!');
+            console.log('Post added!');
+            queryClient.invalidateQueries({
+              queryKey: ['Posts'],
+            })
           }).catch(error => {
             console.log(error);
           })
@@ -79,25 +82,7 @@ const Post = () => {
 
     
 
-      // const res = await fetch(`${BASE_URL}/transaction`,
-      // {
-      //   method:"POST",
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body:JSON.stringify({
-      //     secret:secret,
-      //     recieverPublicKey:recieverPublicKey.key,
-      //     amount:"2"
-      //   })
-      // }
-      // );
-      // const jsonData = await res.json();
-      // console.log(jsonData);
-      // queryClient.invalidateQueries({
-      //   queryKey:[`account-${publicKey}`]
-      // })
-      // return res
+      
     },
   });
   const handleInputChange = (field: string, text: string) => {

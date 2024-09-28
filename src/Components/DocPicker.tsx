@@ -51,8 +51,7 @@ const DocPicker = ({setFormData,styleProps}:{setFormData:any,styleProps?:StylePr
           backgroundColor: '#5D5A5A',
           borderRadius: scale(10),
           paddingHorizontal: scale(10),
-          paddingVertical: scale(10),
-          borderWidth: 1,
+          paddingVertical: scale(8),
           
         },styleProps]}
       >

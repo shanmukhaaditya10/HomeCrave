@@ -7,7 +7,7 @@ import UserIcon from '../Assets/UserIcon.svg';
 import COLORS from '../constants/colors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigatorProps } from 'react-native-screens/lib/typescript/native-stack/types';
-const LargeFoodCard = () => {
+const LargeFoodCard = ({postData}:{postData:any}) => {
   const navigation = useNavigation<NativeStackNavigatorProps>()
   return (
     <TouchableOpacity
@@ -25,7 +25,9 @@ const LargeFoodCard = () => {
         
       }}
       onPress={() => {
-        navigation.navigate('FoodDetails')
+        navigation.navigate('FoodDetails',{
+          postData
+        })
       }}
       >
         <View
@@ -45,14 +47,14 @@ const LargeFoodCard = () => {
                     fontSize:moderateScale(22),
                 }}
                 >
-                Masala Dosa         
+                {postData?.title}        
                 </BigText>
                 <SmallText 
                 style={{
                   fontSize:moderateScale(13),
                 }}
                 >
-                ingridients: onions, potato, tomato,peas...
+                {postData?.description.substring(0,40)}...
                 
                 </SmallText>
                <View
@@ -67,7 +69,7 @@ const LargeFoodCard = () => {
                     fontSize:moderateScale(18)
                 }}
                 >
-                60         
+                {postData?.price}        
                 </BigText>
                
                 <DiamIconWhite width={moderateScale(26)} height={moderateScale(26)} />
@@ -79,12 +81,12 @@ const LargeFoodCard = () => {
                 color:COLORS.PRIMARY
                }}
                >
-                  Upto 5 servings
+                  Upto {postData?.servings} servings
 
                 </SmallText>
             </View>
             <View>
-                <Image source={require('../Assets/Dosa.jpg')} style={{width:moderateScale(100),height:moderateScale(100),objectFit:'cover',
+                <Image source={{uri:postData?.imageUri}} style={{width:moderateScale(100),height:moderateScale(100),objectFit:'cover',
                 borderRadius:moderateScale(20),
 
 

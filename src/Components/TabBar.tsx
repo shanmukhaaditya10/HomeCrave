@@ -4,6 +4,7 @@ import Settings from '../Assets/Profile.svg';
 import Post from '../Assets/Post.svg';
 import {moderateScale} from 'react-native-size-matters';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import COLORS from '../constants/colors';
 
 function TabBar({state, descriptors, navigation}: any) {
   return (
@@ -15,7 +16,7 @@ function TabBar({state, descriptors, navigation}: any) {
         width: '80%',
         alignSelf: 'center',
         bottom: 20,
-        backgroundColor: 'rgb(249, 249, 249)',
+        backgroundColor: 'rgb(70, 70, 70)',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: moderateScale(30),
@@ -64,13 +65,13 @@ function TabBar({state, descriptors, navigation}: any) {
             onPress={onPress}
             onLongPress={onLongPress}>
             {index === 0 && <AntIcon name="home" size={moderateScale(30)}
-            color={isFocused ? 'black' : '#adadad'}
+            color={isFocused ? COLORS.PRIMARY : '#adadad'}
             />}
             {index === 1 && (
-              <AntIcon name="pluscircle" size={moderateScale(30)} color={isFocused ? 'black' : '#adadad'} />
+              <AntIcon name="pluscircle" size={moderateScale(30)} color={isFocused ? COLORS.PRIMARY : '#adadad'} />
             )}
             {index === 2 && <AntIcon name="user" size={moderateScale(30)}
-            color={isFocused ? 'black' : '#adadad'}
+            color={isFocused ? COLORS.PRIMARY : '#adadad'}
             />}
           </TouchableOpacity>
         );

@@ -3,9 +3,10 @@ import React from 'react';
 import FoodCard from './FoodCard';
 import {moderateScale} from 'react-native-size-matters';
 import LargeFoodCard from './LargeFoodCard';
+import usePosts from '../ServerHooks/usePosts';
 
 const VerticalScroller = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7];
+  const {postData,isLoading:postsLoading} = usePosts()
   return (
     <View
       style={{
@@ -13,7 +14,7 @@ const VerticalScroller = () => {
         overflow: 'scroll',
       }}>
       <FlatList
-        data={arr}
+        data={postData}
         scrollEnabled
         renderItem={({item}) => (
           <View
@@ -21,7 +22,7 @@ const VerticalScroller = () => {
                 paddingBottom: moderateScale(25),
 
             }}>
-            <LargeFoodCard />
+            <LargeFoodCard postData={item} />
           </View>
         )}
        ></FlatList>

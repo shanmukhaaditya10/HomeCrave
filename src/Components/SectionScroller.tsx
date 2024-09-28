@@ -2,9 +2,11 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FoodCard from './FoodCard';
 import {moderateScale} from 'react-native-size-matters';
+import usePosts from '../ServerHooks/usePosts';
 
-const SectionScroller = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7];
+const SectionScroller = ({postId}:{postId:string|number}) => {
+  const {postData,isLoading:postsLoading} = usePosts()
+  
   return (
     <View
       style={{
@@ -12,7 +14,7 @@ const SectionScroller = () => {
         overflow: 'scroll',
       }}>
       <FlatList
-        data={arr}
+        data={postData}
         horizontal
         scrollEnabled
         renderItem={({item}) => (
@@ -20,7 +22,7 @@ const SectionScroller = () => {
             style={{
               paddingRight: moderateScale(10),
             }}>
-            <FoodCard />
+            <FoodCard  postData={item} />
           </View>
         )}
        ></FlatList>

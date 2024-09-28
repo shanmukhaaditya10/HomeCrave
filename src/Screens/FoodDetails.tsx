@@ -16,7 +16,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import COLORS from '../constants/colors';
 import CustomButton from '../Components/CustomButton';
+import { useRoute } from '@react-navigation/native';
+import { NativeStackNavigatorProps } from 'react-native-screens/lib/typescript/native-stack/types';
+import OrderModal from '../Components/OrderModal';
 const FoodDetails = () => {
+  const route = useRoute<NativeStackNavigatorProps>()
+  const {postData} = route.params
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [quantity, setQuantity] = React.useState(1)
   return (
     <TouchableWithoutFeedback
       style={[GlobalStyles.container]}
@@ -33,7 +40,7 @@ const FoodDetails = () => {
               backgroundColor: 'white',
             }}>
             <Image
-              source={require('../Assets/Dosa.jpg')}
+              source={{uri: postData?.imageUri}}
               style={{
                 width: '100%',
                 height: '100%',
@@ -53,7 +60,7 @@ const FoodDetails = () => {
                   fontSize: moderateScale(30),
                   fontFamily: 'serif',
                 }}>
-                Masala Dosa
+                {postData?.title}
               </BigText>
               <SmallText
                 style={{
@@ -68,7 +75,7 @@ const FoodDetails = () => {
                     fontWeight: 'bold',
                     textDecorationLine: 'underline',
                   }}>
-                  Nuzhat Khan
+                  {postData?.name}
                 </SmallText>
               </SmallText>
             </View>
@@ -123,7 +130,7 @@ const FoodDetails = () => {
                   style={{
                     fontSize: moderateScale(13),
                   }}>
-                  3 Servings
+                  {postData?.servings} Servings
                 </SmallText>
               </View>
             </View>
@@ -141,9 +148,7 @@ const FoodDetails = () => {
                   fontSize: moderateScale(13),
                   color: '#b0b0b0',
                 }}>
-                ingridients of masala dosa are made of rice flour, masala
-                powder, salt and sugar , peas and other veggies. served with
-                sambhar
+                {postData?.description}
               </SmallText>
             </View>
           
@@ -164,7 +169,8 @@ const FoodDetails = () => {
                 bgColor={COLORS.PRIMARY}
                 fontSize={moderateScale(17)}
                 text="Order Now"
-                // onPress={handleLogin}
+                disabled={false}
+                onPress={() => setModalVisible(true)}
                 // disabled={isLoading || !values.email || !values.password || !values.secretKey}
                 // isLoading={isLoading}
                 // styleProps={{
@@ -173,6 +179,7 @@ const FoodDetails = () => {
                 // }}
               />
             </View>
+            <OrderModal isVisible={modalVisible} setIsVisible={setModalVisible} quantity={quantity} setQuantity={setQuantity}  servings={postData?.servings} price={postData?.price} postData={postData} />
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
